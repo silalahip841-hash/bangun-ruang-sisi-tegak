@@ -1,0 +1,1437 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kuis Matematika Kelas 9: Bangun Ruang Sisi Tegak (BRST)</title>
+  <style>
+    :root {
+      --primary: #1e40af;
+      --primary-light: #3b82f6;
+      --secondary: #0f172a;
+      --bg: #f1f5f9;
+      --card: #ffffff;
+      --text: #1e293b;
+      --muted: #64748b;
+      --success: #15803d;
+      --success-bg: #dcfce7;
+      --danger: #b91c1c;
+      --danger-bg: #fee2e2;
+      --border: #e2e8f0;
+      --easy-bg: #dcfce7;
+      --easy-text: #166534;
+      --med-bg: #fef9c3;
+      --med-text: #854d0e;
+      --ctx-bg: #e0f2fe;
+      --ctx-text: #075985;
+      --hots-bg: #f3e8ff;
+      --hots-text: #6b21a8;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #dbeafe 0%, #f8fafc 50%, #e0e7ff 100%);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 24px 16px;
+    }
+
+    .app-container {
+      width: 100%;
+      max-width: 920px;
+      background: var(--card);
+      border-radius: 20px;
+      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+
+    .header {
+      background: linear-gradient(120deg, var(--primary), var(--primary-light));
+      color: white;
+      padding: 22px 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .header h1 {
+      font-size: 1.32rem;
+      font-weight: 700;
+    }
+
+    .header p {
+      font-size: 0.86rem;
+      opacity: 0.92;
+      margin-top: 3px;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .badge {
+      background: rgba(255, 255, 255, 0.2);
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 600;
+    }
+
+    .btn-header {
+      background: rgba(255, 255, 255, 0.95);
+      color: var(--primary);
+      border: none;
+      padding: 7px 14px;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-header:hover {
+      background: #ffffff;
+      transform: translateY(-1px);
+    }
+
+    .content {
+      padding: 28px;
+    }
+
+    /* Layar Awal */
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 12px;
+      margin: 14px 0 22px;
+    }
+
+    .info-box {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px;
+      background: #f8fafc;
+      text-align: center;
+    }
+
+    .info-box strong {
+      display: block;
+      font-size: 1.2rem;
+      color: var(--primary);
+    }
+
+    .info-box span {
+      font-size: 0.82rem;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .formula-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+      gap: 12px;
+      margin-bottom: 22px;
+    }
+
+    .formula-card {
+      background: #f8fafc;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px;
+    }
+
+    .formula-card h3 {
+      color: var(--primary);
+      font-size: 0.96rem;
+      margin-bottom: 6px;
+    }
+
+    .formula-card ul {
+      list-style: none;
+      font-size: 0.82rem;
+      line-height: 1.65;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+
+    @media (max-width: 600px) {
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .input-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .input-group label {
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+
+    .input-group input {
+      padding: 11px 14px;
+      border: 2px solid var(--border);
+      border-radius: 12px;
+      font-size: 0.98rem;
+      outline: none;
+    }
+
+    .input-group input:focus {
+      border-color: var(--primary);
+    }
+
+    .btn {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 12px 22px;
+      border-radius: 12px;
+      font-size: 0.96rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .btn:hover:not(:disabled) {
+      background: #1d4ed8;
+      transform: translateY(-1px);
+    }
+
+    .btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .btn-outline {
+      background: #ffffff;
+      color: var(--primary);
+      border: 2px solid var(--primary);
+    }
+
+    .btn-outline:hover:not(:disabled) {
+      background: #eff6ff;
+    }
+
+    .btn-success {
+      background: var(--success);
+    }
+
+    .btn-success:hover:not(:disabled) {
+      background: #166534;
+    }
+
+    .btn-danger {
+      background: var(--danger);
+    }
+
+    .btn-danger:hover:not(:disabled) {
+      background: #991b1b;
+    }
+
+    /* Layar Kuis */
+    .quiz-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .tags-wrapper {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .topic-tag {
+      background: #e2e8f0;
+      color: #1e293b;
+      font-weight: 600;
+      font-size: 0.8rem;
+      padding: 5px 12px;
+      border-radius: 8px;
+    }
+
+    .level-tag {
+      font-weight: 700;
+      font-size: 0.78rem;
+      padding: 5px 12px;
+      border-radius: 8px;
+      text-transform: uppercase;
+    }
+
+    .level-mudah { background: var(--easy-bg); color: var(--easy-text); }
+    .level-sedang { background: var(--med-bg); color: var(--med-text); }
+    .level-kontekstual { background: var(--ctx-bg); color: var(--ctx-text); }
+    .level-hots { background: var(--hots-bg); color: var(--hots-text); }
+
+    .timer-box {
+      font-weight: 700;
+      font-size: 0.95rem;
+      background: #f1f5f9;
+      padding: 6px 14px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+    }
+
+    .timer-box.warning {
+      color: var(--danger);
+      background: var(--danger-bg);
+      border-color: #fca5a5;
+    }
+
+    .progress-bar {
+      width: 100%;
+      height: 8px;
+      background: #e2e8f0;
+      border-radius: 999px;
+      overflow: hidden;
+      margin-bottom: 22px;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: var(--primary);
+      width: 0%;
+      transition: width 0.3s ease;
+    }
+
+    .question-box {
+      display: grid;
+      grid-template-columns: 1fr 210px;
+      gap: 20px;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    @media (max-width: 680px) {
+      .question-box {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .question-text {
+      font-size: 1.05rem;
+      line-height: 1.65;
+      font-weight: 600;
+      color: var(--secondary);
+    }
+
+    .illustration-box {
+      background: #f8fafc;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .options-list {
+      display: flex;
+      flex-direction: column;
+      gap: 11px;
+    }
+
+    .option-btn {
+      width: 100%;
+      text-align: left;
+      background: #ffffff;
+      border: 2px solid var(--border);
+      border-radius: 12px;
+      padding: 13px 16px;
+      font-size: 0.96rem;
+      color: var(--text);
+      cursor: pointer;
+      transition: all 0.15s;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .option-btn:hover:not(:disabled) {
+      border-color: var(--primary-light);
+      background: #f8fafc;
+    }
+
+    .option-letter {
+      width: 30px;
+      height: 30px;
+      border-radius: 8px;
+      background: #f1f5f9;
+      color: var(--secondary);
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .option-btn.correct {
+      border-color: var(--success);
+      background: var(--success-bg);
+      color: #14532d;
+    }
+
+    .option-btn.correct .option-letter {
+      background: var(--success);
+      color: white;
+    }
+
+    .option-btn.wrong {
+      border-color: var(--danger);
+      background: var(--danger-bg);
+      color: #7f1d1d;
+    }
+
+    .option-btn.wrong .option-letter {
+      background: var(--danger);
+      color: white;
+    }
+
+    .explanation-box {
+      margin-top: 18px;
+      padding: 16px;
+      border-radius: 12px;
+      background: #eff6ff;
+      border-left: 4px solid var(--primary);
+      font-size: 0.92rem;
+      line-height: 1.6;
+      display: none;
+    }
+
+    .explanation-box h4 {
+      color: var(--primary);
+      margin-bottom: 4px;
+    }
+
+    .quiz-footer {
+      margin-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    /* Layar Hasil & Rangkuman Nilai */
+    .result-header {
+      text-align: center;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .score-circle {
+      width: 115px;
+      height: 115px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      margin: 0 auto 14px;
+      box-shadow: 0 10px 20px rgba(30, 64, 175, 0.25);
+    }
+
+    .score-circle span {
+      font-size: 2.1rem;
+      font-weight: 800;
+      line-height: 1;
+    }
+
+    .score-circle small {
+      font-size: 0.76rem;
+      margin-top: 4px;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 12px;
+      margin: 18px 0;
+    }
+
+    .stat-card {
+      background: #f8fafc;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px;
+      text-align: center;
+    }
+
+    .stat-card strong {
+      display: block;
+      font-size: 1.25rem;
+    }
+
+    .stat-card span {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    /* Tabel Rangkuman Nilai Peserta */
+    .table-wrapper {
+      width: 100%;
+      overflow-x: auto;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      margin: 14px 0 22px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+      text-align: left;
+    }
+
+    th {
+      background: #f1f5f9;
+      color: var(--secondary);
+      font-weight: 700;
+      padding: 12px 14px;
+      border-bottom: 2px solid var(--border);
+      white-space: nowrap;
+    }
+
+    td {
+      padding: 11px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: middle;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    tr:hover td {
+      background: #f8fafc;
+    }
+
+    .pill-status {
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 0.76rem;
+      font-weight: 700;
+      display: inline-block;
+    }
+
+    .pill-tuntas {
+      background: var(--success-bg);
+      color: var(--success);
+    }
+
+    .pill-remedial {
+      background: var(--danger-bg);
+      color: var(--danger);
+    }
+
+    .review-list {
+      margin-top: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      max-height: 360px;
+      overflow-y: auto;
+      padding-right: 4px;
+    }
+
+    .review-item {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px;
+      font-size: 0.9rem;
+    }
+
+    .review-item.is-correct { border-left: 4px solid var(--success); }
+    .review-item.is-wrong { border-left: 4px solid var(--danger); }
+
+    .section-header-flex {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .hidden { display: none !important; }
+  </style>
+</head>
+<body>
+  <div class="app-container">
+    <div class="header">
+      <div>
+        <h1>Kuis Matematika: Bangun Ruang Sisi Tegak</h1>
+        <p>SMP Kelas 9 &bull; Kubus, Balok, Prisma, dan Limas (20 Soal)</p>
+      </div>
+      <div class="header-actions">
+        <div class="badge" id="headerBadge">KKM: 75</div>
+        <button class="btn-header" id="openScoreboardBtn">&#128202; Rekap Nilai (<span id="participantCountBadge">0</span>)</button>
+      </div>
+    </div>
+
+    <!-- SCREEN 1: MULAI -->
+    <div class="content" id="startScreen">
+      <h2 style="font-size: 1.12rem;">Komposisi 20 Soal Evaluasi</h2>
+      <div class="info-grid">
+        <div class="info-box"><strong>5 Soal</strong><span>Mudah (Dasar)</span></div>
+        <div class="info-box"><strong>10 Soal</strong><span>Sedang (Aplikasi)</span></div>
+        <div class="info-box"><strong>3 Soal</strong><span>Kontekstual</span></div>
+        <div class="info-box"><strong>2 Soal</strong><span>HOTS (Penalaran)</span></div>
+      </div>
+
+      <h3 style="font-size: 1rem; margin-bottom: 10px;">Ringkasan Rumus Bangun Ruang Sisi Tegak</h3>
+      <div class="formula-cards">
+        <div class="formula-card">
+          <h3>Kubus (rusuk = s)</h3>
+          <ul>
+            <li>Panjang Rusuk = 12s</li>
+            <li>Luas Permukaan = 6s&sup2;</li>
+            <li>Volume = s&sup3;</li>
+          </ul>
+        </div>
+        <div class="formula-card">
+          <h3>Balok (p, l, t)</h3>
+          <ul>
+            <li>Panjang Rusuk = 4(p + l + t)</li>
+            <li>L. Permukaan = 2(pl + pt + lt)</li>
+            <li>Volume = p &times; l &times; t</li>
+          </ul>
+        </div>
+        <div class="formula-card">
+          <h3>Prisma</h3>
+          <ul>
+            <li>L. Permukaan = (2 &times; L.Alas) + (K.Alas &times; t)</li>
+            <li>Volume = L.Alas &times; t</li>
+          </ul>
+        </div>
+        <div class="formula-card">
+          <h3>Limas</h3>
+          <ul>
+            <li>L. Permukaan = L.Alas + &Sigma;L.Sisi Tegak</li>
+            <li>Volume = 1/3 &times; L.Alas &times; t</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="input-group">
+          <label for="studentName">Nama Lengkap Peserta:</label>
+          <input type="text" id="studentName" placeholder="Contoh: Budi Santoso" autocomplete="off" />
+        </div>
+        <div class="input-group">
+          <label for="studentClass">Kelas:</label>
+          <input type="text" id="studentClass" placeholder="Contoh: IX-A" autocomplete="off" />
+        </div>
+      </div>
+
+      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+        <span style="font-size: 0.88rem; color: var(--muted);">Waktu: <strong>30 Menit</strong> &bull; Bobot: <strong>5 poin/soal</strong></span>
+        <button class="btn" id="startBtn">Mulai Mengerjakan &rarr;</button>
+      </div>
+    </div>
+
+    <!-- SCREEN 2: KUIS -->
+    <div class="content hidden" id="quizScreen">
+      <div class="quiz-meta">
+        <div class="tags-wrapper">
+          <span class="level-tag level-mudah" id="levelBadge">MUDAH</span>
+          <span class="topic-tag" id="questionTopic">Topik: Kubus</span>
+        </div>
+        <span style="font-weight: 600; font-size: 0.92rem;" id="questionCounter">Soal 1 dari 20</span>
+        <div class="timer-box" id="timerDisplay">30:00</div>
+      </div>
+
+      <div class="progress-bar">
+        <div class="progress-fill" id="progressFill"></div>
+      </div>
+
+      <div class="question-box">
+        <div class="question-text" id="questionText">Memuat soal...</div>
+        <div class="illustration-box" id="illustrationBox"></div>
+      </div>
+
+      <div class="options-list" id="optionsContainer"></div>
+
+      <div class="explanation-box" id="explanationBox">
+        <h4>Pembahasan Langkah demi Langkah:</h4>
+        <p id="explanationText"></p>
+      </div>
+
+      <div class="quiz-footer">
+        <div style="font-size: 0.9rem; color: var(--muted);">
+          Skor sementara: <strong id="liveScore" style="color: var(--primary);">0</strong> / 100
+        </div>
+        <button class="btn" id="nextBtn" disabled>Soal Berikutnya &rarr;</button>
+      </div>
+    </div>
+
+    <!-- SCREEN 3: HASIL INDIVIDU + RANGKUMAN NILAI PESERTA -->
+    <div class="content hidden" id="resultScreen">
+      <div class="result-header">
+        <div class="score-circle">
+          <span id="finalScore">0</span>
+          <small>NILAI AKHIR</small>
+        </div>
+        <h2 id="resultGreeting">Selesai!</h2>
+        <p id="resultSubtitle" style="color: var(--muted); font-size: 0.95rem; margin-top: 4px;"></p>
+      </div>
+
+      <div class="stats-grid">
+        <div class="stat-card">
+          <strong id="correctCount" style="color: var(--success);">0 / 20</strong>
+          <span>Total Benar</span>
+        </div>
+        <div class="stat-card">
+          <strong id="breakdownScore" style="font-size: 0.95rem; color: var(--primary); padding-top: 4px;">-</strong>
+          <span>Rincian Benar per Kategori</span>
+        </div>
+        <div class="stat-card">
+          <strong id="timeTaken">00:00</strong>
+          <span>Durasi Pengerjaan</span>
+        </div>
+      </div>
+
+      <!-- RANGKUMAN NILAI SETIAP PESERTA -->
+      <div class="section-header-flex">
+        <h3 style="font-size: 1.05rem;">Rangkuman Nilai Semua Peserta</h3>
+        <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+          <button class="btn btn-success" style="padding: 8px 14px; font-size: 0.84rem;" id="exportCsvBtn">&#128190; Unduh Excel (CSV)</button>
+          <button class="btn btn-danger" style="padding: 8px 14px; font-size: 0.84rem;" id="clearDataBtn">&#128465; Hapus Data</button>
+        </div>
+      </div>
+
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>No</th>
+              <th>Nama Peserta</th>
+              <th>Kelas</th>
+              <th>Mudah (5)</th>
+              <th>Sedang (10)</th>
+              <th>Kontekstual (3)</th>
+              <th>HOTS (2)</th>
+              <th>Nilai</th>
+              <th>Status</th>
+              <th>Waktu</th>
+            </tr>
+          </thead>
+          <tbody id="scoreboardTableBody"></tbody>
+        </table>
+      </div>
+
+      <h3 style="font-size: 1.05rem; margin-bottom: 8px;">Ulasan & Pembahasan 20 Soal</h3>
+      <div class="review-list" id="reviewList"></div>
+
+      <div style="margin-top: 22px; display: flex; justify-content: center; gap: 12px; flex-wrap: wrap;">
+        <button class="btn" id="restartBtn">&#10133; Peserta Berikutnya / Ulangi Kuis</button>
+      </div>
+    </div>
+
+    <!-- SCREEN 4: HALAMAN KHUSUS REKAP NILAI (DARI TOMBOL HEADER) -->
+    <div class="content hidden" id="scoreboardScreen">
+      <div class="section-header-flex" style="margin-top: 0; margin-bottom: 14px;">
+        <div>
+          <h2 style="font-size: 1.2rem;">Rangkuman Nilai Setiap Peserta</h2>
+          <p style="font-size: 0.86rem; color: var(--muted);">Data tersimpan otomatis di browser perangkat ini.</p>
+        </div>
+        <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+          <button class="btn btn-success" style="padding: 8px 14px; font-size: 0.84rem;" id="exportCsvBtn2">&#128190; Unduh Excel (CSV)</button>
+          <button class="btn btn-danger" style="padding: 8px 14px; font-size: 0.84rem;" id="clearDataBtn2">&#128465; Reset Data</button>
+          <button class="btn btn-outline" style="padding: 8px 14px; font-size: 0.84rem;" id="backToStartBtn">&larr; Kembali</button>
+        </div>
+      </div>
+
+      <div class="stats-grid" id="classSummaryStats"></div>
+
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>No</th>
+              <th>Nama Peserta</th>
+              <th>Kelas</th>
+              <th>Mudah (5)</th>
+              <th>Sedang (10)</th>
+              <th>Kontekstual (3)</th>
+              <th>HOTS (2)</th>
+              <th>Nilai</th>
+              <th>Status</th>
+              <th>Durasi</th>
+            </tr>
+          </thead>
+          <tbody id="scoreboardTableBody2"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Ilustrasi SVG Bangun Ruang Sisi Tegak
+    const svgs = {
+      kubus: (label) => `
+        <svg width="150" height="135" viewBox="0 0 150 135">
+          <rect x="30" y="42" width="68" height="68" fill="#eff6ff" stroke="#1e40af" stroke-width="2"/>
+          <polygon points="30,42 56,20 124,20 98,42" fill="#dbeafe" stroke="#1e40af" stroke-width="2"/>
+          <polygon points="98,42 124,20 124,88 98,110" fill="#bfdbfe" stroke="#1e40af" stroke-width="2"/>
+          <line x1="56" y1="20" x2="56" y2="88" stroke="#1e40af" stroke-width="1.2" stroke-dasharray="3 3"/>
+          <line x1="30" y1="110" x2="56" y2="88" stroke="#1e40af" stroke-width="1.2" stroke-dasharray="3 3"/>
+          <line x1="56" y1="88" x2="124" y2="88" stroke="#1e40af" stroke-width="1.2" stroke-dasharray="3 3"/>
+          <text x="48" y="125" font-size="11" font-weight="bold" fill="#b91c1c">${label}</text>
+        </svg>`,
+      balok: (p, l, t) => `
+        <svg width="165" height="135" viewBox="0 0 165 135">
+          <rect x="22" y="48" width="90" height="58" fill="#eff6ff" stroke="#1e40af" stroke-width="2"/>
+          <polygon points="22,48 48,25 138,25 112,48" fill="#dbeafe" stroke="#1e40af" stroke-width="2"/>
+          <polygon points="112,48 138,25 138,83 112,106" fill="#bfdbfe" stroke="#1e40af" stroke-width="2"/>
+          <text x="50" y="120" font-size="10" font-weight="bold" fill="#b91c1c">${p}</text>
+          <text x="122" y="102" font-size="10" font-weight="bold" fill="#0f172a">${l}</text>
+          <text x="141" y="60" font-size="10" font-weight="bold" fill="#1e40af">${t}</text>
+        </svg>`,
+      prismaSegitiga: (alas, tSeg, tPrisma) => `
+        <svg width="160" height="135" viewBox="0 0 160 135">
+          <polygon points="35,42 95,42 65,16" fill="#dbeafe" stroke="#1e40af" stroke-width="2"/>
+          <polygon points="35,42 95,42 95,108 35,108" fill="#eff6ff" stroke="#1e40af" stroke-width="2"/>
+          <polygon points="35,108 95,108 65,82" fill="none" stroke="#1e40af" stroke-width="1.3" stroke-dasharray="3 3"/>
+          <line x1="65" y1="16" x2="65" y2="82" stroke="#1e40af" stroke-width="1.3" stroke-dasharray="3 3"/>
+          <text x="52" y="122" font-size="10" font-weight="bold" fill="#b91c1c">${alas}</text>
+          <text x="72" y="34" font-size="10" font-weight="bold" fill="#0f172a">${tSeg}</text>
+          <text x="100" y="78" font-size="10" font-weight="bold" fill="#1e40af">${tPrisma}</text>
+        </svg>`,
+      limasSegiempat: (sisi, tinggi) => `
+        <svg width="160" height="135" viewBox="0 0 160 135">
+          <polygon points="28,108 102,108 126,84 52,84" fill="#dbeafe" stroke="#1e40af" stroke-width="1.8"/>
+          <line x1="77" y1="20" x2="28" y2="108" stroke="#1e40af" stroke-width="2"/>
+          <line x1="77" y1="20" x2="102" y2="108" stroke="#1e40af" stroke-width="2"/>
+          <line x1="77" y1="20" x2="126" y2="84" stroke="#1e40af" stroke-width="2"/>
+          <line x1="77" y1="20" x2="52" y2="84" stroke="#1e40af" stroke-width="1.3" stroke-dasharray="3 3"/>
+          <line x1="77" y1="20" x2="77" y2="96" stroke="#b91c1c" stroke-width="1.5" stroke-dasharray="3 2"/>
+          <text x="50" y="122" font-size="10" font-weight="bold" fill="#0f172a">${sisi}</text>
+          <text x="81" y="66" font-size="10" font-weight="bold" fill="#b91c1c">${tinggi}</text>
+        </svg>`,
+      gabungan: () => `
+        <svg width="160" height="140" viewBox="0 0 160 140">
+          <rect x="42" y="65" width="64" height="58" fill="#eff6ff" stroke="#1e40af" stroke-width="2"/>
+          <polygon points="106,65 126,48 126,106 106,123" fill="#bfdbfe" stroke="#1e40af" stroke-width="2"/>
+          <polygon points="74,16 42,65 106,65" fill="#dbeafe" stroke="#1e40af" stroke-width="2"/>
+          <polygon points="74,16 106,65 126,48" fill="#93c5fd" stroke="#1e40af" stroke-width="2"/>
+          <text x="56" y="135" font-size="10" font-weight="bold" fill="#b91c1c">s = 12 cm</text>
+          <text x="86" y="42" font-size="10" font-weight="bold" fill="#0f172a">t=8 cm</text>
+        </svg>`
+    };
+
+    // 20 Soal Lengkap: 5 Mudah, 10 Sedang, 3 Kontekstual, 2 HOTS
+    const questions = [
+      // === 5 SOAL MUDAH ===
+      {
+        level: "Mudah",
+        levelClass: "level-mudah",
+        topic: "Kubus",
+        question: "Sebuah kubus memiliki panjang rusuk 8 cm. Berapakah volume kubus tersebut?",
+        svg: svgs.kubus("s = 8 cm"),
+        options: ["64 cm³", "384 cm³", "512 cm³", "96 cm³"],
+        answer: 2,
+        explanation: "Volume kubus = s³ = 8 × 8 × 8 = 512 cm³."
+      },
+      {
+        level: "Mudah",
+        levelClass: "level-mudah",
+        topic: "Kubus",
+        question: "Luas permukaan sebuah kubus yang memiliki panjang rusuk 5 cm adalah...",
+        svg: svgs.kubus("s = 5 cm"),
+        options: ["125 cm²", "150 cm²", "100 cm²", "60 cm²"],
+        answer: 1,
+        explanation: "Kubus memiliki 6 sisi persegi yang kongruen. Luas permukaan = 6 × s² = 6 × 5² = 6 × 25 = 150 cm²."
+      },
+      {
+        level: "Mudah",
+        levelClass: "level-mudah",
+        topic: "Balok",
+        question: "Sebuah balok berukuran panjang 10 cm, lebar 6 cm, dan tinggi 4 cm. Volume balok tersebut adalah...",
+        svg: svgs.balok("p=10", "l=6", "t=4"),
+        options: ["240 cm³", "248 cm³", "120 cm³", "80 cm³"],
+        answer: 0,
+        explanation: "Volume balok = p × l × t = 10 × 6 × 4 = 240 cm³."
+      },
+      {
+        level: "Mudah",
+        levelClass: "level-mudah",
+        topic: "Prisma",
+        question: "Diketahui sebuah prisma tegak memiliki luas alas 36 cm² dan tinggi 12 cm. Volume prisma tersebut adalah...",
+        svg: svgs.prismaSegitiga("L = 36", "", "t = 12"),
+        options: ["144 cm³", "432 cm³", "216 cm³", "48 cm³"],
+        answer: 1,
+        explanation: "Volume prisma = Luas alas × tinggi = 36 × 12 = 432 cm³."
+      },
+      {
+        level: "Mudah",
+        levelClass: "level-mudah",
+        topic: "Limas",
+        question: "Sebuah limas segi empat memiliki luas alas 45 cm² dan tinggi 10 cm. Berapakah volume limas tersebut?",
+        svg: svgs.limasSegiempat("L = 45", "t = 10"),
+        options: ["450 cm³", "225 cm³", "150 cm³", "135 cm³"],
+        answer: 2,
+        explanation: "Volume limas = 1/3 × Luas alas × tinggi = 1/3 × 45 × 10 = 15 × 10 = 150 cm³."
+      },
+
+      // === 10 SOAL SEDANG ===
+      {
+        level: "Sedang",
+        levelClass: "level-sedang",
+        topic: "Kubus",
+        question: "Jika luas permukaan sebuah kubus adalah 294 cm², maka panjang rusuk kubus tersebut adalah...",
+        svg: svgs.kubus("L = 294 cm²"),
+        options: ["6 cm", "7 cm", "8 cm", "9 cm"],
+        answer: 1,
+        explanation: "L = 6s² → 294 = 6s² → s² = 294 / 6 = 49 → s = √49 = 7 cm."
+      },
+      {
+        level: "Sedang",
+        levelClass: "level-sedang",
+        topic: "Balok",
+        question: "Sebuah balok memiliki panjang 12 cm, lebar 8 cm, dan tinggi 5 cm. Berapakah luas permukaan balok tersebut?",
+        svg: svgs.balok("p=12", "l=8", "t=5"),
+        options: ["480 cm²", "392 cm²", "196 cm²", "352 cm²"],
+        answer: 1,
+        explanation: "L = 2(pl + pt + lt) = 2((12×8) + (12×5) + (8×5)) = 2(96 + 60 + 40) = 2(196) = 392 cm²."
+      },
+      {
+        level: "Sedang",
+        levelClass: "level-sedang",
+        topic: "Balok",
+        question: "Volume sebuah balok adalah 720 cm³. Jika panjangnya 15 cm dan lebarnya 8 cm, berapakah tinggi balok tersebut?",
+        svg: svgs.balok("p=15", "l=8", "t=?"),
+        options: ["5 cm", "6 cm", "8 cm", "9 cm"],
+        answer: 1,
+        explanation: "V = p × l × t → 720 = 15 × 8 × t → 720 = 120t → t = 720 / 120 = 6 cm."
+      },
+      {
+        level: "Sedang",
+        levelClass: "level-sedang",
+        topic: "Kerangka Bangun Ruang",
+        question: "Budi memiliki kawat sepanjang 2 meter untuk membuat kerangka balok berukuran 18 cm × 12 cm × 10 cm. Sisa kawat yang tidak terpakai adalah...",
+        svg: svgs.balok("18 cm", "12 cm", "10 cm"),
+        options: ["40 cm", "20 cm", "160 cm", "50 cm"],
+        answer: 0,
+        explanation: "Panjang kawat 1 balok = 4(p + l + t) = 4(18 + 12 + 10) = 4(40) = 160 cm. Kawat tersedia = 2 m = 200 cm. Sisa = 200 - 160 = 40 cm."
+      },
+      {
+        level: "Sedang",
+        levelClass: "level-sedang",
+        topic: "Prisma Segitiga",
+        question: "Alas sebuah prisma berbentuk segitiga siku-siku dengan panjang sisi siku-sikunya 6 cm dan 8 cm. Jika tinggi prisma 15 cm, volume prisma tersebut adalah...",
+        svg: svgs.prismaSegitiga("a=6", "t=8", "T=15"),
+        options: ["720 cm³", "360 cm³", "180 cm³", "240 cm³"],
+        answer: 1,
+        explanation: "Luas alas segitiga = 1/2 × 6 × 8 = 24 cm². Volume prisma = L.alas × T = 24 × 15 = 360 cm³."
+      },
+      {
+        level: "Sedang",
+        levelClass: "level-sedang",
+        topic: "Prisma Segitiga",
+        question: "Sebuah prisma tegak alasnya berbentuk segitiga siku-siku dengan sisi 3 cm, 4 cm, dan 5 cm. Jika tinggi prisma 10 cm, berapakah luas permukaan prisma tersebut?",
+        svg: svgs.prismaSegitiga("3, 4, 5", "", "T=10"),
+        options: ["120 cm²", "132 cm²", "126 cm²", "60 cm²"],
+        answer: 1,
+        explanation: "L.alas = 1/2 × 3 × 4 = 6 cm². Keliling alas = 3 + 4 + 5 = 12 cm. L.permukaan = (2 × L.alas) + (K.alas × T) = (2 × 6) + (12 × 10) = 12 + 120 = 132 cm²."
+      },
+      {
+        level: "Sedang",
+        levelClass: "level-sedang",
+        topic: "Prisma Belah Ketupat",
+        question: "Alas sebuah prisma berbentuk belah ketupat dengan panjang diagonal 10 cm dan 24 cm. Jika tinggi prisma 14 cm, volume prisma adalah...",
+        svg: svgs.prismaSegitiga("d1=10, d2=24", "", "T=14"),
+        options: ["3.360 cm³", "1.680 cm³", "840 cm³", "1.440 cm³"],
+        answer: 1,
+        explanation: "L.alas belah ketupat = (d1 × d2) / 2 = (10 × 24) / 2 = 120 cm². Volume = 120 × 14 = 1.680 cm³."
+      },
+      {
+        level: "Sedang",
+        levelClass: "level-sedang",
+        topic: "Limas Segi Empat",
+        question: "Alas sebuah limas berbentuk persegi dengan panjang sisi 12 cm. Jika tinggi limas 8 cm, berapakah luas permukaan limas tersebut?",
+        svg: svgs.limasSegiempat("s = 12 cm", "t = 8 cm"),
+        options: ["384 cm²", "336 cm²", "240 cm²", "528 cm²"],
+        answer: 0,
+        explanation: "Setengah sisi alas = 12/2 = 6 cm. Tinggi segitiga tegak (Pythagoras) = √(8² + 6²) = √100 = 10 cm. L.alas = 12×12 = 144 cm². Luas 4 segitiga = 4 × (1/2 × 12 × 10) = 240 cm². Total = 144 + 240 = 384 cm²."
+      },
+      {
+        level: "Sedang",
+        levelClass: "level-sedang",
+        topic: "Limas Segi Empat",
+        question: "Volume sebuah limas yang alasnya berbentuk persegi adalah 400 cm³. Jika tinggi limas 12 cm, maka panjang rusuk alas limas tersebut adalah...",
+        svg: svgs.limasSegiempat("s = ?", "t = 12 cm"),
+        options: ["8 cm", "10 cm", "12 cm", "15 cm"],
+        answer: 1,
+        explanation: "V = 1/3 × s² × t → 400 = 1/3 × s² × 12 → 400 = 4s² → s² = 100 → s = 10 cm."
+      },
+      {
+        level: "Sedang",
+        levelClass: "level-sedang",
+        topic: "Bangun Ruang Gabungan",
+        question: "Sebuah bangun ruang terdiri atas kubus dengan rusuk 12 cm dan limas segi empat di atasnya dengan tinggi limas 8 cm. Volume gabungan bangun tersebut adalah...",
+        svg: svgs.gabungan(),
+        options: ["2.112 cm³", "1.728 cm³", "2.880 cm³", "1.920 cm³"],
+        answer: 0,
+        explanation: "V kubus = 12³ = 1.728 cm³. V limas = 1/3 × 12² × 8 = 1/3 × 144 × 8 = 384 cm³. Volume gabungan = 1.728 + 384 = 2.112 cm³."
+      },
+
+      // === 3 SOAL KONTEKSTUAL ===
+      {
+        level: "Kontekstual",
+        levelClass: "level-kontekstual",
+        topic: "Aplikasi Balok (Debit Air)",
+        question: "Sebuah bak mandi berbentuk balok memiliki ukuran bagian dalam panjang 120 cm, lebar 80 cm, dan tinggi 75 cm. Bak tersebut akan diisi air menggunakan keran dengan debit 12 liter/menit. Waktu yang diperlukan untuk mengisi bak hingga penuh adalah...",
+        svg: svgs.balok("120 cm", "80 cm", "75 cm"),
+        options: ["45 menit", "60 menit", "72 menit", "90 menit"],
+        answer: 1,
+        explanation: "Volume bak = 120 × 80 × 75 = 720.000 cm³ = 720 dm³ = 720 liter. Waktu = Volume / Debit = 720 / 12 = 60 menit."
+      },
+      {
+        level: "Kontekstual",
+        levelClass: "level-kontekstual",
+        topic: "Aplikasi Prisma (Tenda)",
+        question: "Sebuah tenda pramuka berbentuk prisma segitiga sama kaki dengan lebar alas 2 m, tinggi tenda 1,5 m, dan panjang tenda 3 m. Jika sisi miring atap tenda berukuran 1,8 m, luas kain parasut minimal yang dibutuhkan (termasuk alas tenda) adalah...",
+        svg: svgs.prismaSegitiga("a=2m", "t=1,5m", "P=3m"),
+        options: ["19,8 m²", "16,8 m²", "13,8 m²", "22,8 m²"],
+        answer: 0,
+        explanation: "Luas 2 segitiga depan-belakang = 2 × (1/2 × 2 × 1,5) = 3 m². Luas alas persegi panjang = 2 × 3 = 6 m². Luas 2 sisi miring atap = 2 × (1,8 × 3) = 10,8 m². Total kain = 3 + 6 + 10,8 = 19,8 m²."
+      },
+      {
+        level: "Kontekstual",
+        levelClass: "level-kontekstual",
+        topic: "Aplikasi Limas (Atap Gazebo)",
+        question: "Atap sebuah gazebo berbentuk limas persegi tanpa alas dengan panjang sisi 4 m dan tinggi atap 1,5 m. Jika pemilik ingin memasang genteng dengan biaya Rp120.000,00 per m², total biaya pemasangan genteng adalah...",
+        svg: svgs.limasSegiempat("s = 4 m", "t = 1,5 m"),
+        options: ["Rp2.400.000,00", "Rp1.920.000,00", "Rp2.880.000,00", "Rp3.840.000,00"],
+        answer: 0,
+        explanation: "Setengah sisi = 4/2 = 2 m. Tinggi segitiga sisi tegak = √(1,5² + 2²) = √(2,25 + 4) = √6,25 = 2,5 m. Luas 4 segitiga atap = 4 × (1/2 × 4 × 2,5) = 20 m². Biaya = 20 × Rp120.000 = Rp2.400.000,00."
+      },
+
+      // === 2 SOAL HOTS ===
+      {
+        level: "HOTS",
+        levelClass: "level-hots",
+        topic: "Penalaran Perbandingan & Perubahan Ukuran",
+        question: "Sebuah balok memiliki volume V. Jika panjang balok diperbesar menjadi 2 kali semula, lebarnya diperbesar menjadi 1,5 kali semula, dan tingginya diperkecil menjadi 2/3 kali semula, maka perbandingan volume balok awal dengan volume balok setelah diubah adalah...",
+        svg: svgs.balok("2p", "1,5l", "2/3 t"),
+        options: ["1 : 2", "2 : 3", "3 : 4", "1 : 3"],
+        answer: 0,
+        explanation: "V awal = p × l × t. V baru = (2p) × (1,5l) × (2/3 t) = (2 × 3/2 × 2/3) × (p × l × t) = 2 × V awal. Jadi perbandingan V awal : V baru = 1 : 2."
+      },
+      {
+        level: "HOTS",
+        levelClass: "level-hots",
+        topic: "Penalaran Ketinggian Air & Benda Masuk",
+        question: "Sebuah akuarium berbentuk balok berukuran 50 cm × 30 cm × 40 cm berisi air setinggi 25 cm. Ke dalam akuarium tersebut dimasukkan 3 buah hiasan kubus pejal berukuran rusuk 10 cm hingga seluruhnya tenggelam. Ketinggian air di dalam akuarium sekarang adalah...",
+        svg: svgs.balok("50 cm", "30 cm", "t air = 25"),
+        options: ["26 cm", "27 cm", "28 cm", "30 cm"],
+        answer: 1,
+        explanation: "Volume 3 kubus = 3 × 10³ = 3.000 cm³. Kenaikan tinggi air (Δt) = Volume benda / Luas alas akuarium = 3.000 / (50 × 30) = 3.000 / 1.500 = 2 cm. Tinggi air sekarang = 25 + 2 = 27 cm."
+      }
+    ];
+
+    // Penyimpanan Rangkuman Nilai Peserta (LocalStorage)
+    const STORAGE_KEY = "kuis_brst_kelas9_rekap_nilai";
+    const KKM = 75;
+
+    function getSavedResults() {
+      try {
+        return JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
+      } catch (e) {
+        return [];
+      }
+    }
+
+    function saveParticipantResult(record) {
+      const list = getSavedResults();
+      list.push(record);
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(list));
+      updateParticipantCountBadge();
+    }
+
+    function updateParticipantCountBadge() {
+      const count = getSavedResults().length;
+      document.getElementById("participantCountBadge").textContent = count;
+    }
+
+    // State Kuis Aktif
+    let currentIdx = 0;
+    let score = 0;
+    let studentName = "";
+    let studentClass = "";
+    let userAnswers = [];
+    let timerInterval = null;
+    const TOTAL_TIME = 30 * 60; // 30 menit
+    let timeRemaining = TOTAL_TIME;
+
+    // Elemen DOM
+    const startScreen = document.getElementById("startScreen");
+    const quizScreen = document.getElementById("quizScreen");
+    const resultScreen = document.getElementById("resultScreen");
+    const scoreboardScreen = document.getElementById("scoreboardScreen");
+    const studentNameInput = document.getElementById("studentName");
+    const studentClassInput = document.getElementById("studentClass");
+    const startBtn = document.getElementById("startBtn");
+    const nextBtn = document.getElementById("nextBtn");
+    const restartBtn = document.getElementById("restartBtn");
+
+    updateParticipantCountBadge();
+
+    function showScreen(screenEl) {
+      [startScreen, quizScreen, resultScreen, scoreboardScreen].forEach(s => s.classList.add("hidden"));
+      screenEl.classList.remove("hidden");
+    }
+
+    // Mulai Kuis
+    startBtn.addEventListener("click", () => {
+      const rawName = studentNameInput.value.trim();
+      const rawClass = studentClassInput.value.trim();
+      if (!rawName) {
+        alert("Silakan masukkan Nama Lengkap Peserta terlebih dahulu.");
+        studentNameInput.focus();
+        return;
+      }
+
+      studentName = rawName;
+      studentClass = rawClass || "IX";
+      showScreen(quizScreen);
+      document.getElementById("headerBadge").textContent = `${studentName} (${studentClass})`;
+
+      currentIdx = 0;
+      score = 0;
+      userAnswers = [];
+      timeRemaining = TOTAL_TIME;
+      document.getElementById("liveScore").textContent = "0";
+
+      startTimer();
+      renderQuestion();
+    });
+
+    function startTimer() {
+      clearInterval(timerInterval);
+      updateTimerUI();
+      timerInterval = setInterval(() => {
+        timeRemaining--;
+        updateTimerUI();
+        if (timeRemaining <= 0) {
+          clearInterval(timerInterval);
+          finishQuiz();
+        }
+      }, 1000);
+    }
+
+    function updateTimerUI() {
+      const mins = String(Math.floor(timeRemaining / 60)).padStart(2, "0");
+      const secs = String(timeRemaining % 60).padStart(2, "0");
+      const timerEl = document.getElementById("timerDisplay");
+      timerEl.textContent = `${mins}:${secs}`;
+      if (timeRemaining <= 180) {
+        timerEl.classList.add("warning");
+      } else {
+        timerEl.classList.remove("warning");
+      }
+    }
+
+    function renderQuestion() {
+      const q = questions[currentIdx];
+      const levelBadge = document.getElementById("levelBadge");
+      levelBadge.textContent = q.level;
+      levelBadge.className = `level-tag ${q.levelClass}`;
+
+      document.getElementById("questionTopic").textContent = `Topik: ${q.topic}`;
+      document.getElementById("questionCounter").textContent = `Soal ${currentIdx + 1} dari ${questions.length}`;
+      document.getElementById("progressFill").style.width = `${(currentIdx / questions.length) * 100}%`;
+      document.getElementById("questionText").textContent = `${currentIdx + 1}. ${q.question}`;
+      document.getElementById("illustrationBox").innerHTML = q.svg;
+
+      const optionsContainer = document.getElementById("optionsContainer");
+      optionsContainer.innerHTML = "";
+
+      const letters = ["A", "B", "C", "D"];
+      q.options.forEach((opt, idx) => {
+        const btn = document.createElement("button");
+        btn.className = "option-btn";
+        btn.innerHTML = `<span class="option-letter">${letters[idx]}</span><span>${opt}</span>`;
+        btn.addEventListener("click", () => selectOption(idx));
+        optionsContainer.appendChild(btn);
+      });
+
+      document.getElementById("explanationBox").style.display = "none";
+      nextBtn.disabled = true;
+      nextBtn.textContent = currentIdx === questions.length - 1 ? "Selesai & Simpan Nilai ✓" : "Soal Berikutnya →";
+    }
+
+    function selectOption(selectedIndex) {
+      const q = questions[currentIdx];
+      const optionButtons = document.querySelectorAll(".option-btn");
+      const isCorrect = selectedIndex === q.answer;
+
+      optionButtons.forEach((btn, idx) => {
+        btn.disabled = true;
+        if (idx === q.answer) {
+          btn.classList.add("correct");
+        } else if (idx === selectedIndex && !isCorrect) {
+          btn.classList.add("wrong");
+        }
+      });
+
+      if (isCorrect) {
+        score += 5; // 20 soal x 5 poin = 100
+        document.getElementById("liveScore").textContent = score;
+      }
+
+      userAnswers.push({
+        level: q.level,
+        question: q.question,
+        selected: q.options[selectedIndex],
+        correct: q.options[q.answer],
+        isCorrect: isCorrect,
+        explanation: q.explanation
+      });
+
+      document.getElementById("explanationText").textContent = q.explanation;
+      document.getElementById("explanationBox").style.display = "block";
+      document.getElementById("progressFill").style.width = `${((currentIdx + 1) / questions.length) * 100}%`;
+      nextBtn.disabled = false;
+    }
+
+    nextBtn.addEventListener("click", () => {
+      if (currentIdx < questions.length - 1) {
+        currentIdx++;
+        renderQuestion();
+      } else {
+        finishQuiz();
+      }
+    });
+
+    function finishQuiz() {
+      clearInterval(timerInterval);
+      showScreen(resultScreen);
+
+      const mudahBenar = userAnswers.filter(a => a.level === "Mudah" && a.isCorrect).length;
+      const sedangBenar = userAnswers.filter(a => a.level === "Sedang" && a.isCorrect).length;
+      const kontekstualBenar = userAnswers.filter(a => a.level === "Kontekstual" && a.isCorrect).length;
+      const hotsBenar = userAnswers.filter(a => a.level === "HOTS" && a.isCorrect).length;
+      const correctTotal = mudahBenar + sedangBenar + kontekstualBenar + hotsBenar;
+
+      const elapsed = TOTAL_TIME - timeRemaining;
+      const mins = String(Math.floor(elapsed / 60)).padStart(2, "0");
+      const secs = String(elapsed % 60).padStart(2, "0");
+      const durationStr = `${mins}:${secs}`;
+
+      // Simpan hasil peserta ke rangkuman
+      saveParticipantResult({
+        id: Date.now(),
+        nama: studentName,
+        kelas: studentClass,
+        mudah: mudahBenar,
+        sedang: sedangBenar,
+        kontekstual: kontekstualBenar,
+        hots: hotsBenar,
+        benarTotal: correctTotal,
+        nilai: score,
+        status: score >= KKM ? "Tuntas" : "Remedial",
+        durasi: durationStr,
+        waktuSelesai: new Date().toLocaleString("id-ID")
+      });
+
+      document.getElementById("finalScore").textContent = score;
+      document.getElementById("correctCount").textContent = `${correctTotal} / 20`;
+      document.getElementById("breakdownScore").textContent = `M:${mudahBenar}/5 | S:${sedangBenar}/10 | K:${kontekstualBenar}/3 | H:${hotsBenar}/2`;
+      document.getElementById("timeTaken").textContent = durationStr;
+
+      let predicate = "";
+      if (score >= 90) predicate = `Sangat Memuaskan, ${studentName} (${studentClass})! Penguasaan konsep dasar hingga HOTS sangat baik.`;
+      else if (score >= 75) predicate = `Tuntas! Bagus sekali, ${studentName} (${studentClass}). Pemahaman materi Bangun Ruang Sisi Tegak sudah baik.`;
+      else predicate = `Belum Tuntas (KKM 75), ${studentName} (${studentClass}). Pelajari kembali pembahasan di bawah ini.`;
+
+      document.getElementById("resultGreeting").textContent = score >= KKM ? "Selamat, Tuntas!" : "Kuis Selesai!";
+      document.getElementById("resultSubtitle").textContent = predicate;
+
+      renderScoreboardTables();
+
+      const reviewList = document.getElementById("reviewList");
+      reviewList.innerHTML = "";
+
+      questions.forEach((q, idx) => {
+        const ans = userAnswers[idx];
+        const statusClass = ans && ans.isCorrect ? "is-correct" : "is-wrong";
+        const userAnsText = ans ? ans.selected : "Tidak dijawab (Waktu habis)";
+
+        const item = document.createElement("div");
+        item.className = `review-item ${statusClass}`;
+        item.innerHTML = `
+          <div style="margin-bottom: 6px;">
+            <span class="level-tag ${q.levelClass}" style="font-size: 0.7rem; padding: 3px 8px; margin-right: 6px;">${q.level}</span>
+            <strong>${idx + 1}. ${q.question}</strong>
+          </div>
+          <div style="font-size: 0.85rem; margin-bottom: 4px;">
+            Jawaban Anda: <strong style="color: ${ans && ans.isCorrect ? 'var(--success)' : 'var(--danger)'}">${userAnsText}</strong>
+            ${(!ans || !ans.isCorrect) ? ` | Kunci: <strong style="color: var(--success)">${q.options[q.answer]}</strong>` : ''}
+          </div>
+          <div style="font-size: 0.84rem; color: var(--muted); background: #f8fafc; padding: 8px; border-radius: 8px; margin-top: 6px;">
+            <strong>Pembahasan:</strong> ${q.explanation}
+          </div>
+        `;
+        reviewList.appendChild(item);
+      });
+    }
+
+    function renderScoreboardTables() {
+      const results = getSavedResults();
+      const bodies = [
+        document.getElementById("scoreboardTableBody"),
+        document.getElementById("scoreboardTableBody2")
+      ];
+
+      bodies.forEach(tbody => {
+        if (!tbody) return;
+        tbody.innerHTML = "";
+
+        if (results.length === 0) {
+          tbody.innerHTML = `<tr><td colspan="10" style="text-align: center; color: var(--muted); padding: 20px;">Belum ada data nilai peserta yang tersimpan.</td></tr>`;
+          return;
+        }
+
+        // Urutkan berdasarkan nilai tertinggi
+        const sorted = [...results].sort((a, b) => b.nilai - a.nilai);
+        sorted.forEach((r, index) => {
+          const pillClass = r.nilai >= KKM ? "pill-tuntas" : "pill-remedial";
+          const tr = document.createElement("tr");
+          tr.innerHTML = `
+            <td><strong>${index + 1}</strong></td>
+            <td><strong>${escapeHtml(r.nama)}</strong></td>
+            <td>${escapeHtml(r.kelas)}</td>
+            <td>${r.mudah} / 5</td>
+            <td>${r.sedang} / 10</td>
+            <td>${r.kontekstual} / 3</td>
+            <td>${r.hots} / 2</td>
+            <td><strong style="font-size: 1rem; color: var(--primary);">${r.nilai}</strong></td>
+            <td><span class="pill-status ${pillClass}">${r.status}</span></td>
+            <td>${r.durasi}</td>
+          `;
+          tbody.appendChild(tr);
+        });
+      });
+
+      // Statistik Kelas di layar Rekap Nilai
+      const summaryEl = document.getElementById("classSummaryStats");
+      if (results.length === 0) {
+        summaryEl.innerHTML = "";
+      } else {
+        const avg = (results.reduce((acc, cur) => acc + cur.nilai, 0) / results.length).toFixed(1);
+        const maxScore = Math.max(...results.map(r => r.nilai));
+        const tuntasCount = results.filter(r => r.nilai >= KKM).length;
+        summaryEl.innerHTML = `
+          <div class="stat-card"><strong style="color: var(--primary);">${results.length}</strong><span>Jumlah Peserta</span></div>
+          <div class="stat-card"><strong>${avg}</strong><span>Rata-rata Nilai</span></div>
+          <div class="stat-card"><strong style="color: var(--success);">${maxScore}</strong><span>Nilai Tertinggi</span></div>
+          <div class="stat-card"><strong style="color: var(--success);">${tuntasCount} / ${results.length}</strong><span>Peserta Tuntas (≥75)</span></div>
+        `;
+      }
+    }
+
+    function escapeHtml(text) {
+      const div = document.createElement("div");
+      div.textContent = text;
+      return div.innerHTML;
+    }
+
+    function exportToCSV() {
+      const results = getSavedResults();
+      if (results.length === 0) {
+        alert("Belum ada data peserta untuk diunduh.");
+        return;
+      }
+
+      const headers = ["No", "Nama Peserta", "Kelas", "Mudah (Max 5)", "Sedang (Max 10)", "Kontekstual (Max 3)", "HOTS (Max 2)", "Total Benar", "Nilai Akhir", "Status", "Durasi", "Waktu Selesai"];
+      const rows = results.map((r, i) => [
+        i + 1,
+        `"${r.nama.replace(/"/g, '""')}"`,
+        `"${r.kelas.replace(/"/g, '""')}"`,
+        r.mudah,
+        r.sedang,
+        r.kontekstual,
+        r.hots,
+        r.benarTotal,
+        r.nilai,
+        r.status,
+        r.durasi,
+        `"${r.waktuSelesai}"`
+      ]);
+
+      const csvContent = "data:text/csv;charset=utf-8," + [headers.join(","), ...rows.map(e => e.join(","))].join("\n");
+      const encodedUri = encodeURI(csvContent);
+      const link = document.createElement("a");
+      link.setAttribute("href", encodedUri);
+      link.setAttribute("download", `Rekap_Nilai_Kuis_BRST_Kelas9.csv`);
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+
+    function clearAllResults() {
+      if (confirm("Apakah Anda yakin ingin menghapus seluruh rangkuman nilai peserta?")) {
+        localStorage.removeItem(STORAGE_KEY);
+        updateParticipantCountBadge();
+        renderScoreboardTables();
+      }
+    }
+
+    // Event Listeners Navigasi & Ekspor
+    document.getElementById("openScoreboardBtn").addEventListener("click", () => {
+      clearInterval(timerInterval);
+      renderScoreboardTables();
+      showScreen(scoreboardScreen);
+    });
+
+    document.getElementById("backToStartBtn").addEventListener("click", () => {
+      showScreen(startScreen);
+      document.getElementById("headerBadge").textContent = "KKM: 75";
+    });
+
+    restartBtn.addEventListener("click", () => {
+      studentNameInput.value = "";
+      showScreen(startScreen);
+      document.getElementById("headerBadge").textContent = "KKM: 75";
+    });
+
+    document.getElementById("exportCsvBtn").addEventListener("click", exportToCSV);
+    document.getElementById("exportCsvBtn2").addEventListener("click", exportToCSV);
+    document.getElementById("clearDataBtn").addEventListener("click", clearAllResults);
+    document.getElementById("clearDataBtn2").addEventListener("click", clearAllResults);
+  </script>
+</body>
+</html>
